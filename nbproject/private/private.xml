@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/_src/ESCOLA-WEB/web/index.jsp</file>
+            <file>file:/C:/_src/ESCOLA-WEB/web/listaDeProfessores.jsp</file>
+            <file>file:/C:/_src/ESCOLA-WEB/web/Interface/head.jsp</file>
+            <file>file:/C:/_src/ESCOLA-WEB/web/listaDeAlunos.jsp</file>
+            <file>file:/C:/_src/ESCOLA-WEB/src/java/escola/Disciplina.java</file>
+            <file>file:/C:/_src/ESCOLA-WEB/web/cadastrarDisciplina.jsp</file>
+        </group>
     </open-files>
 </project-private>
