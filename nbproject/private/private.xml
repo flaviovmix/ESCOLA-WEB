@@ -3,15 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/_src/ESCOLA-WEB/src/java/escola/Turma.java</file>
             <file>file:/C:/_src/ESCOLA-WEB/src/java/escola/Aluno.java</file>
             <file>file:/C:/_src/ESCOLA-WEB/src/java/escola/Professor.java</file>
-            <file>file:/C:/_src/ESCOLA-WEB/web/index.jsp</file>
+            <file>file:/C:/_src/ESCOLA-WEB/src/java/teste/PostgreSQLConnection.java</file>
+            <file>file:/C:/_src/ESCOLA-WEB/src/java/teste/ClienteModel.java</file>
             <file>file:/C:/_src/ESCOLA-WEB/web/listaDeAlunos.jsp</file>
             <file>file:/C:/_src/ESCOLA-WEB/web/Interface/head.jsp</file>
             <file>file:/C:/_src/ESCOLA-WEB/src/java/escola/Disciplina.java</file>
             <file>file:/C:/_src/ESCOLA-WEB/web/Interface/fimPagina.jsp</file>
+            <file>file:/C:/_src/ESCOLA-WEB/src/java/escola/Turma.java</file>
+            <file>file:/C:/_src/ESCOLA-WEB/web/index.jsp</file>
+            <file>file:/C:/_src/ESCOLA-WEB/src/java/teste/Cliente.java</file>
             <file>file:/C:/_src/ESCOLA-WEB/src/java/escola/Pessoa.java</file>
+            <file>file:/C:/_src/ESCOLA-WEB/src/java/teste/ClienteController.java</file>
             <file>file:/C:/_src/ESCOLA-WEB/web/Interface/comecoPagina.jsp</file>
         </group>
     </open-files>
