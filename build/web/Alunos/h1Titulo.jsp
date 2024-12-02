@@ -1,0 +1,1 @@
+<h1 class="text-center py-4">Registro de Aluno</h1>
