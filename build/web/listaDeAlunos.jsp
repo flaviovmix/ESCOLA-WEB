@@ -1,3 +1,4 @@
+<%@page import="escola.Aluno"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="escola.Disciplina"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -7,16 +8,16 @@
 
     String paramNome = request.getParameter("nome");
     String nome = (paramNome == null || paramNome.isEmpty()) ? "Valor Padrão" : paramNome;
-    String paramCargaHoraria = request.getParameter("cargaHoraria");
-    String cargaHoraria = (paramCargaHoraria == null || paramCargaHoraria.isEmpty()) ? "0" : paramCargaHoraria;
+    String paramEmail = request.getParameter("email");
+    String email = (paramEmail == null || paramEmail.isEmpty()) ? "100" : paramEmail;
 
     ServletContext context = getServletContext();
-    ArrayList<Disciplina> vetDisciplina = (ArrayList<Disciplina>) context.getAttribute("vetDisciplina");
+    ArrayList<Aluno> vetAluno = (ArrayList<Aluno>) context.getAttribute("vetAluno");
 
     // Se a lista não existir no contexto, inicialize-a
-    if (vetDisciplina == null) {
-        vetDisciplina = new ArrayList<Disciplina>();
-        context.setAttribute("vetDisciplina", vetDisciplina);
+    if (vetAluno == null) {
+        vetAluno = new ArrayList<Aluno>();
+        context.setAttribute("vetAluno", vetAluno);
     }
 %>
 
@@ -27,20 +28,19 @@
     // Apenas listar as disciplinas se o nome for vazio ou "Valor Padrão"
     if (!("Valor Padrão".equals(nome))) {
         // Adicionar a nova disciplina
-        Disciplina disciplina = new Disciplina();
-        disciplina.setNome(nome);
-        disciplina.setCargaHoraria(Integer.parseInt(cargaHoraria));
-        vetDisciplina.add(disciplina);
+        Aluno aluno = new Aluno();
+        aluno.setNome(nome);
+        aluno.setEmail(email);
+        vetAluno.add(aluno);
 
         // Atualiza a lista no contexto
-        context.setAttribute("vetDisciplina", vetDisciplina);
+        context.setAttribute("vetAluno", vetAluno);
 
         // Confirmação de adição
         out.println(
-                "<div class='alert alert-success d-flex align-items-center' role='alert' >"
-                + "<div>"
-                + "Dados cadastrada com sucesso!"
-                + "</div>"
+                "<div class='alert alert-success alert-dismissible fade show' role='alert'>"
+                    + "<strong>Dados Cadastrados com Sucesso!</strong>"
+                    + "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>"
                 + "</div>"
         );
     }
@@ -52,16 +52,16 @@
 
 <%
     int index = 1;
-    for (Disciplina disc : vetDisciplina) {
+    for (Aluno aluno : vetAluno) {
         out.print("<tr>");
         out.print("<td>");
         out.print(index);
         out.print("</td>");
         out.print("<td>");
-        out.print(disc.getNome());
+        out.print(aluno.getNome());
         out.print("</td>");
-        out.print("<td class='text-center'>");
-        out.print(disc.getCargaHoraria());
+        out.print("<td>");
+        out.print(aluno.getEmail());
         out.print("</td>");
         out.print("<td>Dado</td>");
         out.print("<td>Dado</td>");
