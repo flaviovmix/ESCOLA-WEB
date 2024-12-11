@@ -1,3 +1,6 @@
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="funcoes.icones"%>
 <%@page import="funcoes.calculoTempo"%>
 <%@page import="java.util.Date"%>
@@ -48,7 +51,19 @@
 <%
     // Apenas listar as disciplinas se o nome for vazio ou "Valor Padrão"
     if (!("Valor Padrão".equals(nome))) {
-        // Adicionar a nova disciplina
+        
+        Connection conecta;
+        PreparedStatement st;
+        Class.forName("org.postgresql.Driver");
+        conecta = DriverManager.getConnection("jdbc:postgresql://localhost:5432/banco", "postgres", "masterkey");
+        st = conecta.prepareStatement("insert into aluno values(?,?,?,?)");
+        st.setString(1, nome);
+        st.setString(2, email);
+        st.setString(3, cpf);
+        st.setString(4, rg);
+        st.executeUpdate();
+                
+        // Adicionar a novo aluno
         Aluno aluno = new Aluno();
         aluno.setNome(nome);
         aluno.setEmail(email);
