@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="escola.Aluno"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="escola.Disciplina"%>
@@ -6,11 +8,27 @@
 <%
     request.setCharacterEncoding("UTF-8");
 
+    //NOME
     String paramNome = request.getParameter("nome");
     String nome = (paramNome == null || paramNome.isEmpty()) ? "Valor Padrão" : paramNome;
+    
+    //EMAIL
     String paramEmail = request.getParameter("email");
-    String email = (paramEmail == null || paramEmail.isEmpty()) ? "100" : paramEmail;
+    String email = (paramEmail == null || paramEmail.isEmpty()) ? "" : paramEmail;
 
+    //CPF
+    String paramCpf = request.getParameter("cpf");
+    String cpf = (paramCpf == null || paramCpf.isEmpty()) ? "" : paramCpf;    
+    
+    //RG
+    String paramRg = request.getParameter("rg");
+    String rg = (paramRg == null || paramRg.isEmpty()) ? "" : paramRg;        
+    
+    //DATA NASCIMENTO
+    String paramDataNascimento = request.getParameter("dataNascimento");
+    String dataNascimento = (paramDataNascimento == null || paramDataNascimento.isEmpty()) ? "" : paramDataNascimento;
+    
+    
     ServletContext context = getServletContext();
     ArrayList<Aluno> vetAluno = (ArrayList<Aluno>) context.getAttribute("vetAluno");
 
@@ -31,6 +49,10 @@
         Aluno aluno = new Aluno();
         aluno.setNome(nome);
         aluno.setEmail(email);
+        aluno.setCpf(cpf);
+        aluno.setRg(rg);
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        aluno.setDataNascimento(formato.parse(dataNascimento));
         vetAluno.add(aluno);
 
         // Atualiza a lista no contexto
@@ -50,8 +72,9 @@
 <%@ include file="Alunos/tab-paneTop.jsp" %>
 <%@ include file="Alunos/tabelaTop.jsp" %>
 
-<%
+<%        
     int index = 1;
+    
     for (Aluno aluno : vetAluno) {
         out.print("<tr>");
         out.print("<td>");
@@ -63,9 +86,31 @@
         out.print("<td>");
         out.print(aluno.getEmail());
         out.print("</td>");
-        out.print("<td>Dado</td>");
-        out.print("<td>Dado</td>");
-        out.print("<td>Dado</td>");
+        out.print("<td>");
+        out.print(aluno.getCpf());
+        out.print("</td>");
+        out.print("<td>");
+        out.print(aluno.getRg());
+        out.print("</td>");
+        out.print("<td class='text-center'>");
+        
+        Date dataAtual = new Date();
+
+        // Calcular a diferença em milissegundos
+        long diffMilissegundos = dataAtual.getTime() - aluno.getDataNascimento().getTime();
+
+        // Converter milissegundos para segundos
+        long diffSegundos = diffMilissegundos / 1000;
+
+        // Número de segundos em um ano (considerando ano comum de 365 dias)
+        long segundosPorAno = 60 * 60 * 24 * 365;
+
+        // Calcular a idade em anos
+        long idadeEmAnos = diffSegundos / segundosPorAno;        
+        
+        
+        out.print(idadeEmAnos);
+        out.print("</td>");
         out.print("<td>"
                 + "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='currentColor' class='bi bi-pencil-square' viewBox='0 0 16 16'>"
                 + "<path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/>"

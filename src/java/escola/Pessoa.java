@@ -9,7 +9,7 @@ public class Pessoa {
     private String cpf;
     private String rg;
     private String sexo;
-    private Date dadaNascimento;
+    private Date dataNascimento;
     private String cep;
     private String Estado;
     private String Endereco;
@@ -57,12 +57,12 @@ public class Pessoa {
         this.sexo = sexo;
     }
 
-    public Date getDadaNascimento() {
-        return dadaNascimento;
+    public Date getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setDadaNascimento(Date dadaNascimento) {
-        this.dadaNascimento = dadaNascimento;
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     public String getCep() {

@@ -30,21 +30,29 @@
                         </div>
 
                         <div class="col-md-3">
-                            <label for="zip" class="form-label">CPF</label>
-                            <input type="text" class="form-control" name="cargaHoraria" id="zip" placeholder="" required>
+                            <label for="cpf" class="form-label">CPF</label>
+                            <input type="text" class="form-control" name="cpf" id="cpf" placeholder="" required>
                             <div class="invalid-feedback">
-                                Zip code required.
+                                CPF requerido.
                             </div>
                         </div>                    
 
                         <div class="col-md-3">
-                            <label for="state" class="form-label">RG</label>
-                            <input type="text" class="form-control" id="zip" placeholder="" required>
+                            <label for="rg" class="form-label">RG</label>
+                            <input type="text" class="form-control" id="rg" name="rg" placeholder="" required>
                             <div class="invalid-feedback">
-                                Zip code required.
+                                RG requerido.
                             </div>
                         </div>   
 
+                        <div class="col-md-3">
+                            <label for="nascimento" class="form-label">Dada de Nascimento</label>
+                            <input type="date" class="form-control" id="" name="dataNascimento" placeholder="" required>
+                            <div class="invalid-feedback">
+                                Data de Nascimento requerido.
+                            </div>                            
+                        </div>                 
+                        
                         <div class="col-md-3">
                             <label for="country" class="form-label">Sexo</label>
                             <select class="form-select" id="country" required>
@@ -56,12 +64,7 @@
                             <div class="invalid-feedback">
                                 Please select a valid country.
                             </div>
-                        </div>        
-
-                        <div class="col-md-3">
-                            <label for="country" class="form-label">Dada de Nascimento</label>
-                            <input type="text" class="form-control" id="zip" placeholder="" required>
-                        </div>                 
+                        </div>                           
 
                         <div class="col-md-2">
                             <label for="zip" class="form-label">Cep</label>
