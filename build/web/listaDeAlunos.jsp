@@ -1,3 +1,4 @@
+<%@page import="funcoes.mensagem"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
@@ -52,16 +53,22 @@
     // Apenas listar as disciplinas se o nome for vazio ou "Valor Padrão"
     if (!("Valor Padrão".equals(nome))) {
         
-        Connection conecta;
-        PreparedStatement st;
-        Class.forName("org.postgresql.Driver");
-        conecta = DriverManager.getConnection("jdbc:postgresql://localhost:5432/banco", "postgres", "masterkey");
-        st = conecta.prepareStatement("insert into aluno values(?,?,?,?)");
-        st.setString(1, nome);
-        st.setString(2, email);
-        st.setString(3, cpf);
-        st.setString(4, rg);
-        st.executeUpdate();
+        try {
+            Connection conecta;
+            PreparedStatement st;
+            Class.forName("org.postgresql.Driver");
+            conecta = DriverManager.getConnection("jdbc:postgresql://localhost:5432/banco", "postgres", "masterkey");
+            st = conecta.prepareStatement("insert into aluno values(?,?,?,?)");
+            st.setString(1, nome);
+            st.setString(2, email);
+            st.setString(3, cpf);
+            st.setString(4, rg);
+            st.executeUpdate();
+            
+            out.println(mensagem.success("Dados Cadastrados com Sucesso!"));
+        } catch (Exception mens) {
+            out.println(mensagem.danger(mens.getMessage()));
+        }
                 
         // Adicionar a novo aluno
         Aluno aluno = new Aluno();
@@ -75,14 +82,6 @@
 
         // Atualiza a lista no contexto
         context.setAttribute("vetAluno", vetAluno);
-
-        // Confirmação de adição
-        out.println(
-                "<div class='alert alert-success alert-dismissible fade show' role='alert'>"
-                    + "<strong>Dados Cadastrados com Sucesso!</strong>"
-                    + "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>"
-                + "</div>"
-        );
     }
 %>
 
@@ -90,7 +89,7 @@
 <%@ include file="Alunos/tab-paneTop.jsp" %>
 <%@ include file="Alunos/tabelaTop.jsp" %>
 
-<%        
+<%  
     int index = 2;
     for (Aluno aluno : vetAluno) {
         out.print("<tr>");
